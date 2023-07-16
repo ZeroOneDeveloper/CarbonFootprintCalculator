@@ -20,15 +20,10 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { Icon } from "@chakra-ui/react";
-import {
-  AddIcon,
-  EditIcon,
-  ExternalLinkIcon,
-  HamburgerIcon,
-  RepeatIcon,
-} from "@chakra-ui/icons";
 
-const Header = () => {
+import { pages } from "@/app/cal/utils";
+
+const Header: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = React.useState(false);
   return (
     <nav
@@ -49,21 +44,16 @@ const Header = () => {
           backgroundColor="transparent"
         />
         <MenuList rounded={10}>
-          <MenuItem icon={<Icon as={LuDroplet} />} as="a" href="/water">
-            수도
-          </MenuItem>
-          <MenuItem icon={<Icon as={LuPlug} />} as="a" href="/cal/electricity">
-            전기
-          </MenuItem>
-          <MenuItem icon={<Icon as={LuTrash2} />} as="a" href="/cal/trash">
-            쓰레기
-          </MenuItem>
-          <MenuItem icon={<Icon as={LuBus} />} as="a" href="/cal/vehicle">
-            대중교통
-          </MenuItem>
-          <MenuItem icon={<Icon as={LuHeart} />} as="a" href="/cal/life">
-            일상생활
-          </MenuItem>
+          {pages.map((page, k) => (
+            <MenuItem
+              key={k}
+              icon={<Icon as={page.icon} />}
+              as="a"
+              href={`/cal/${page.route}`}
+            >
+              {page.name}
+            </MenuItem>
+          ))}
         </MenuList>
       </Menu>
     </nav>

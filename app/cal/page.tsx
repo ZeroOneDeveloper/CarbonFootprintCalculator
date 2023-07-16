@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { pages } from "./utils";
 
 const Page = () => {
-  return redirect(`/cal/${pages[0].name}`);
+  return redirect(`/cal/${pages[0].route}`);
 };
 
 export default Page;

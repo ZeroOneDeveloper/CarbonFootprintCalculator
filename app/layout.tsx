@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-
-import { Sprout } from "lucide-react";
 
 import "./globals.css";
+import { Providers } from "./providers";
 import Header from "@/components/Header";
 
 export const metadata: Metadata = {
@@ -19,9 +17,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className="min-h-screen bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-teal-200 to-lime-200">
-        <Header />
-        {children}
+      <body
+        style={{
+          minHeight: "100vh",
+          background:
+            "conic-gradient(at center top, rgb(153, 246, 228), rgb(217, 249, 157))",
+        }}
+      >
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );

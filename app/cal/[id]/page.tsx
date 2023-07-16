@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 import { pages } from "../utils";
@@ -9,7 +11,11 @@ const Page: React.FC<{
 }> = ({ params }) => {
   return pages.map((page, k) => {
     if (page.route === params.id) {
-      return <page.children key={k} />;
+      return (
+        <div key={k} style={{ display: "flex", justifyContent: "center" }}>
+          <page.children />
+        </div>
+      );
     }
   });
 };

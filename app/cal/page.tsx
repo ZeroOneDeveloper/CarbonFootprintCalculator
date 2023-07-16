@@ -1,10 +1,8 @@
 import React from "react";
 import { redirect } from "next/navigation";
 
-import { pages } from "./utils";
-
-const Page = () => {
-  return redirect(`/cal/${pages[0].route}`);
+const Page: React.FC = () => {
+  return redirect("/cal/water");
 };
 
 export default Page;

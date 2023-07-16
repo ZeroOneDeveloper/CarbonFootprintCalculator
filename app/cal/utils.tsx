@@ -95,7 +95,7 @@ const Water: React.FC = () => {
           </div>
         </InputGroup>
         <Text fontSize="xl" fontWeight={900} marginTop="1rem">
-          가족 {familyNumber}명이 수도를 사용해 발생한 CO₂량은{" "}
+          수도 {useWaterAmount} 의 양을 사용해 발생한 CO₂량은{" "}
           {((useWaterAmount * 1.53) / familyNumber).toFixed(1)} kg-CO₂입니다.
         </Text>
       </Stack>

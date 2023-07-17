@@ -5,7 +5,7 @@ import { Divider, ListItem, UnorderedList } from "@chakra-ui/react";
 
 const Footer: React.FC = () => {
   return (
-    <div style={{ marginTop: "5rem" }}>
+    <div style={{ marginTop: "5rem", marginBottom: "5rem" }}>
       <div
         style={{
           marginTop: "24px",

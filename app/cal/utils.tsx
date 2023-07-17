@@ -21,6 +21,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import { watch } from "fs";
 
 const Water: React.FC = () => {
   const [familyNumber, setFamilyNumber] = useState(1);
@@ -294,7 +295,7 @@ const Vehicle: React.FC = () => {
                 flex="1"
                 width="10rem"
                 min={1}
-                max={99999}
+                max={1440}
                 focusThumbOnChange={false}
                 value={useTime}
                 onChange={(value) => setUseTime(value)}
@@ -328,7 +329,41 @@ const Vehicle: React.FC = () => {
                 flex="1"
                 width="10rem"
                 min={1}
-                max={99999}
+                max={9999}
+                focusThumbOnChange={false}
+                value={useNum}
+                onChange={(value) => setUseNum(value)}
+              >
+                <SliderTrack>
+                  <SliderFilledTrack />
+                </SliderTrack>
+                <SliderThumb fontSize="sm" boxSize="32px" />
+              </Slider>
+            </Flex>
+          </div>
+          <div>
+            <Text>버스 이용횟수(회/월)</Text>
+            <Flex>
+              <NumberInput
+                maxW="150px"
+                mr="2rem"
+                borderColor="blackAlpha.900"
+                value={useNum}
+                onChange={(valueAsString, valueAsNumber) =>
+                  setUseNum(valueAsNumber)
+                }
+              >
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+              <Slider
+                flex="1"
+                width="10rem"
+                min={1}
+                max={9999}
                 focusThumbOnChange={false}
                 value={useNum}
                 onChange={(value) => setUseNum(value)}
@@ -354,6 +389,10 @@ const Vehicle: React.FC = () => {
 
 const Life: React.FC = () => {
   const [familyNumber, setFamilyNumber] = useState(1);
+  const [watchingTV, setWatchingTV] = useState(1);
+  const [useComputer, setUseComputer] = useState(1);
+  const [useWasher, setUseWasher] = useState(1);
+  const [useLight, setUseLight] = useState(1);
   const [useTrash, setUseTrash] = useState(1);
   return (
     <div>
@@ -390,7 +429,151 @@ const Life: React.FC = () => {
         </InputGroup>
         <InputGroup gap={12} display="flex" alignItems="center">
           <div>
-            <Text>쓰레기 배출량(l/월)</Text>
+            <Text>하루에 TV 시청 시간을 이만큼만 줄이자!</Text>
+            <Flex>
+              <NumberInput
+                maxW="150px"
+                mr="2rem"
+                borderColor="blackAlpha.900"
+                value={watchingTV}
+                onChange={(valueAsString, valueAsNumber) =>
+                  setWatchingTV(valueAsNumber)
+                }
+              >
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+              <Slider
+                flex="1"
+                width="10rem"
+                min={1}
+                max={24}
+                focusThumbOnChange={false}
+                value={watchingTV}
+                onChange={(value) => setWatchingTV(value)}
+              >
+                <SliderTrack>
+                  <SliderFilledTrack />
+                </SliderTrack>
+                <SliderThumb fontSize="sm" boxSize="32px" />
+              </Slider>
+            </Flex>
+          </div>
+        </InputGroup>
+        <InputGroup gap={12} display="flex" alignItems="center">
+          <div>
+            <Text>하루에 컴퓨터 사용량 시간을 이만큼만 줄이자!</Text>
+            <Flex>
+              <NumberInput
+                maxW="150px"
+                mr="2rem"
+                borderColor="blackAlpha.900"
+                value={useComputer}
+                onChange={(valueAsString, valueAsNumber) =>
+                  setUseComputer(valueAsNumber)
+                }
+              >
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+              <Slider
+                flex="1"
+                width="10rem"
+                min={1}
+                max={24}
+                focusThumbOnChange={false}
+                value={useComputer}
+                onChange={(value) => setUseComputer(value)}
+              >
+                <SliderTrack>
+                  <SliderFilledTrack />
+                </SliderTrack>
+                <SliderThumb fontSize="sm" boxSize="32px" />
+              </Slider>
+            </Flex>
+          </div>
+        </InputGroup>
+        <InputGroup gap={12} display="flex" alignItems="center">
+          <div>
+            <Text>한달에 세탁기 이용횟수를 이만큼만 줄이자!</Text>
+            <Flex>
+              <NumberInput
+                maxW="150px"
+                mr="2rem"
+                borderColor="blackAlpha.900"
+                value={useWasher}
+                onChange={(valueAsString, valueAsNumber) =>
+                  setUseWasher(valueAsNumber)
+                }
+              >
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+              <Slider
+                flex="1"
+                width="10rem"
+                min={1}
+                max={9999}
+                focusThumbOnChange={false}
+                value={useWasher}
+                onChange={(value) => setUseWasher(value)}
+              >
+                <SliderTrack>
+                  <SliderFilledTrack />
+                </SliderTrack>
+                <SliderThumb fontSize="sm" boxSize="32px" />
+              </Slider>
+            </Flex>
+          </div>
+        </InputGroup>
+        <InputGroup gap={12} display="flex" alignItems="center">
+          <div>
+            <Text>백열전구를 형광등으로 몇개만큼 줄이면</Text>
+            <Flex>
+              <NumberInput
+                maxW="150px"
+                mr="2rem"
+                borderColor="blackAlpha.900"
+                value={useLight}
+                onChange={(valueAsString, valueAsNumber) =>
+                  setUseLight(valueAsNumber)
+                }
+              >
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+              <Slider
+                flex="1"
+                width="10rem"
+                min={1}
+                max={9999}
+                focusThumbOnChange={false}
+                value={useLight}
+                onChange={(value) => setUseLight(value)}
+              >
+                <SliderTrack>
+                  <SliderFilledTrack />
+                </SliderTrack>
+                <SliderThumb fontSize="sm" boxSize="32px" />
+              </Slider>
+            </Flex>
+          </div>
+        </InputGroup>
+        <InputGroup gap={12} display="flex" alignItems="center">
+          <div>
+            <Text>한달에 쓰레기 배출량을 이만큼만 줄이자!</Text>
             <Flex>
               <NumberInput
                 maxW="150px"
@@ -411,7 +594,7 @@ const Life: React.FC = () => {
                 flex="1"
                 width="10rem"
                 min={1}
-                max={99999}
+                max={9999}
                 focusThumbOnChange={false}
                 value={useTrash}
                 onChange={(value) => setUseTrash(value)}
@@ -425,8 +608,8 @@ const Life: React.FC = () => {
           </div>
         </InputGroup>
         <Text fontSize="xl" fontWeight={900} marginTop="1rem">
-          쓰레기 {useTrash} (l/월)의 양을 배출해 발생한 CO₂량은{" "}
-          {((useTrash * 0.09) / familyNumber).toFixed(1)} kg-CO₂입니다.
+          여러분의 실천으로 {((watchingTV * 2.82 + useComputer * 5.72 + useWasher * 0.04 + useLight * 2.37 + useTrash * 0.0935) / familyNumber).toFixed(1)} (kg-CO₂)를 줄일 수 있습니다. <br />
+          {((watchingTV * 2.82 + useComputer * 5.72 + useWasher * 0.04 + useLight * 2.37 + useTrash * 0.0935) / familyNumber).toFixed(1)} (kg-CO₂)를 줄이기 위해서 연간 {(((watchingTV * 2.82 + useComputer * 5.72 + useWasher * 0.04 + useLight * 2.37 + useTrash * 0.0935) / familyNumber) / 0.27).toFixed(1)} 그루를 심어야해요.
         </Text>
       </Stack>
     </div>
